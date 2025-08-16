@@ -3,382 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5PN - Self Storage Solutions</title>
+    <title>5PN - Email Marketing & Automation Services</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
             min-height: 100vh;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
+        
+        .hero {
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            text-align: center;
+            color: white;
             position: relative;
         }
-
-        nav a:hover {
-            color: #667eea;
-        }
-
-        nav a::after {
+        
+        .hero::before {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            background-color: #667eea;
-            transition: width 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(1px);
         }
-
-        nav a:hover::after {
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
             width: 100%;
         }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
+        
+        .logo {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            font-style: italic;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            letter-spacing: 2px;
+            transform: skew(-8deg);
+            text-transform: uppercase;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .description {
+            font-size: 1.1rem;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
         }
-
-        .services {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-        }
-
-        .service-grid {
+        
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin: 3rem 0;
         }
-
+        
         .service-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 2rem;
+            background: rgba(251, 191, 36, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(251, 191, 36, 0.2);
+            background: rgba(251, 191, 36, 0.25);
         }
-
+        
         .service-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            display: block;
         }
-
-        .service-card h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
+        
+        .service-title {
             font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        .about {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-
-        .about-text p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: #667eea;
         }
-
-        .footer-section p {
-            color: #bdc3c7;
-            margin-bottom: 0.5rem;
+        
+        .service-desc {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: rgba(251, 191, 36, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(251, 191, 36, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(251, 191, 36, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .specialties {
+            margin: 2rem 0;
+        }
+        
+        .specialty-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .tag {
+            background: rgba(251, 191, 36, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.5);
         }
-
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+            .logo {
+                font-size: 2.5rem;
             }
             
-            .about-content {
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
-            
-            nav ul {
+            .contact-info {
                 flex-direction: column;
-                gap: 1rem;
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="hero">
         <div class="container">
-            <div class="header-content">
+            <div class="hero-content">
                 <div class="logo">5PN</div>
-                <nav>
-                    <ul>
-                        <li><a href="#services">Solutions</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="https://books.5pn.co">Books</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Self Storage Solutions</h1>
-            <p>Architecting Digital Empires Through Strategic Storage Infrastructure</p>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <h2>Our Core Competencies</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <span class="service-icon">🏗️</span>
-                    <h3>Self-Hosted Infrastructure Development</h3>
-                    <p>We facilitate the establishment of autonomous storage ecosystems for visionary individuals seeking complete data sovereignty. Our methodologies ensure seamless integration of personal and collaborative storage architectures.</p>
+                <div class="tagline">Email Marketing & Automation Services</div>
+                <div class="description">
+                    Professional email marketing solutions for businesses and agencies. From strategic copywriting to technical automation setup, we handle the complete email marketing stack so you can focus on growing your business.
                 </div>
-                <div class="service-card">
-                    <span class="service-icon">🔒</span>
-                    <h3>Confidential Asset Preservation</h3>
-                    <p>Discrete storage solutions for sensitive materials requiring specialized handling. Our secure facilities maintain the highest standards of confidentiality while ensuring immediate accessibility for authorized entities.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">👑</span>
-                    <h3>Empire Expansion Facilitation</h3>
-                    <p>Strategic consultation for individuals pursuing comprehensive storage dominion. We provide frameworks for scaling personal storage operations into thriving multi-client enterprises with proven succession protocols.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🌐</span>
-                    <h3>Network-Isolated Access Solutions</h3>
-                    <p>Implementation of sophisticated access control systems utilizing advanced tunneling technologies. Our solutions ensure that your curated collections remain accessible only to verified entities within your trusted network perimeter.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">📚</span>
-                    <h3>Legacy Preservation Systems</h3>
-                    <p>Long-term archival strategies for materials of significant personal or cultural value. Our redundant storage methodologies guarantee perpetual accessibility across technological transitions and generational transfers.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🤝</span>
-                    <h3>Collaborative Storage Syndication</h3>
-                    <p>Facilitating strategic partnerships between storage visionaries to maximize resource efficiency. Confidential negotiations handled with complete discretion to ensure mutually beneficial storage sharing arrangements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About 5PN Storage Solutions</h2>
-                    <p>5PN Self Storage Solutions has been quietly enabling storage independence for discerning clients who understand that true digital freedom begins with control of one's own infrastructure.</p>
-                    <p>We recognize that the modern storage landscape requires more than simple space allocation. Our approach integrates advanced self-hosting principles with time-tested preservation methodologies, creating storage ecosystems that grow with your ambitions.</p>
-                    <p>Every engagement is handled with absolute confidentiality. We specialize in transforming storage dreams into sustainable realities, whether you're safeguarding personal treasures or architecting the foundation of a storage empire that will outlast conventional cloud dependencies.</p>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number">∞</span>
-                        <div class="stat-label">Storage Potential</div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">✍️</div>
+                        <div class="service-title">Email Copywriting & Strategy</div>
+                        <div class="service-desc">
+                            Complete email sequences, newsletters, and campaigns that convert. We craft compelling copy that builds relationships and drives sales.
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <div class="stat-label">Availability</div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <div class="service-title">Technical Setup & Automation</div>
+                        <div class="service-desc">
+                            Full email platform setup, automation workflows, deliverability optimization, and technical integrations. We make the tech work seamlessly.
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <div class="stat-label">Self-Sovereign</div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🤝</div>
+                        <div class="service-title">White-Label Services</div>
+                        <div class="service-desc">
+                            Technical backend support for agencies and freelancers. We handle the automation setup while you focus on client relationships and strategy.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="specialties">
+                    <div class="specialty-tags">
+                        <span class="tag">Email Sequences</span>
+                        <span class="tag">Marketing Automation</span>
+                        <span class="tag">Deliverability Optimization</span>
+                        <span class="tag">Platform Migrations</span>
+                        <span class="tag">A/B Testing</span>
+                        <span class="tag">Analytics & Reporting</span>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <div class="cta-title">Ready to Scale Your Email Marketing?</div>
+                    <div class="cta-text">
+                        Whether you need complete email marketing management or just technical automation support, we've got you covered. Let's discuss how we can help grow your business.
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <a href="mailto:hello@5pn.co">hello@5pn.co</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>💼</span>
+                            <span>Available for Projects</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>For inquiries regarding storage infrastructure consultation, please reach out through secure channels.</p>
-                    <p>Initial assessments available for qualified storage visionaries.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Operational Hours</h3>
-                    <p>Storage systems monitored continuously</p>
-                    <p>Consultation availability by arrangement</p>
-                    <p>Emergency access protocols maintained</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Service Areas</h3>
-                    <p>Self-hosted infrastructure globally distributed</p>
-                    <p>Local storage solutions available</p>
-                    <p>Remote access facilitation provided</p>
-                </div>
-            </div>
-            <p>&copy; 2025 5PN Self Storage Solutions. All storage arrangements remain confidential.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    </div>
 </body>
 </html>
